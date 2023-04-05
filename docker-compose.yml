@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: always
+    ports:
+      - "8096:8096"
+    environment:
+      - TZ=America/New_York
+      - PUBLIC_URL=https://jellyfin.example.com
+    volumes:
+      - /srv/jellyfin/config:/config
+      - /srv/jellyfin/cache:/cache
+      - /media:/media
+
+volumes:
+  jellyfin_config:
+  jellyfin_cache:
